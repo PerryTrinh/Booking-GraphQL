@@ -3,7 +3,8 @@
 
 Simple event booking application written in Node.js with Express and React.js, with storage in MongoDB
 
-### NPM Package Explanation
+## NPM Package Explanation
+- [bcrypt.js](https://www.npmjs.com/package/bcryptjs) - Security package for storing sensitive information
 - [Body-Parser](https://www.npmjs.com/package/body-parser) - Middleware to parse body of HTTP requests
 - [Express](https://www.npmjs.com/package/express) - Web application framework for Node.js
 - [Express-GraphQL](https://www.npmjs.com/package/express-graphql) - Express server to handle GraphQL queries
