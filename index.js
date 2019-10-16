@@ -21,8 +21,8 @@ mongoose
     .connect(`mongodb+srv://${process.env.MONGO_USER}:${
         process.env.MONGO_PASSWORD
     }@graphql-learning-cluster-borad.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-).then(() => {
-    app.listen(PORT);
-}).catch(err => {
-    console.log(err);
-});
+    ).then(() => {
+        app.listen(PORT);
+    }).catch(err => {
+        console.log(err);
+    });
