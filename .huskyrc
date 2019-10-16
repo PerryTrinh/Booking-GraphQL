@@ -1,5 +1,6 @@
 {
     "hooks": {
-        "pre-commit": "./node_modules/.bin/eslint ."
+        "pre-commit": "./node_modules/.bin/eslint .",
+        "pre-push": "./node_modules/.bin/eslint ."
     }
 }
