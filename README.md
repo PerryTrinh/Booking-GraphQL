@@ -1,4 +1,4 @@
-#Event Booking Web App
+# Event Booking Web App
 ---
 
 Simple event booking application written in Node.js with Express and React.js, with storage in MongoDB
@@ -10,6 +10,8 @@ Simple event booking application written in Node.js with Express and React.js, w
 - [Express-GraphQL](https://www.npmjs.com/package/express-graphql) - Express server to handle GraphQL queries
 - [GraphQL](https://www.npmjs.com/package/graphql) - JS Implementation of GraphQL
 - [Mongoose](https://www.npmjs.com/package/mongoose) - Library that adds MongoDB drivers and enables object modeling through JS objects
+
 - [Nodemon](https://www.npmjs.com/package/nodemon) - Automatically restarts server upon file changes
+- [ESLint](https://www.npmjs.com/package/eslint) - Linting Program
 
 Taken and modified from this [GraphQL Tutorial](https://www.youtube.com/watch?v=7giZGFDGnkc&list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_&index=1)
