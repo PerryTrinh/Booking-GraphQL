@@ -2,12 +2,23 @@
 
 Simple event booking application written in Node.js with Express and React.js, with storage in MongoDB
 
-## Install Instructions (Docker)
-Coming soon
+## Install Instructions (The Docker way)
+1. Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
+2. Change the connection URL for mongoose in [index.js](./index.js) to the relevant URL in the docker container
+    1. `mongodb://mongo:27017/bookings-db`
+    2. For Linux users, note that docker commands need to be run with `sudo`
+3. Wait for docker containers to download/spin up. Localhost port 3000 is for the node application, and port 27017 is for MongoDB
 
-## Install Instructions (cloud DB)
+## Install Instructions (DB on Local Machine)
+1. Install [MongoDB](https://www.mongodb.com/download-center/community)
+2. Go to your terminal and run `mongod` to start the MongoDB daemon.
+3. Change the connection URL for mongoose in [index.js](./index.js) to the relevant URL for your computer
+    1. Most likely will be `mongodb://localhost:27017/bookings-db`
+
+## Install Instructions (Cloud DB through MongoDB Atlas)
 1. Install [Node.js](https://nodejs.org/en/) (which should also install npm)
-2. Clone this repository, `cd` into the directory and run `npm install` in the terminal.
+2. Change the connection URL for mongoose in [index.js](./index.js) to consume a environment variable
+    1. This is done for security reasons, change it to `${process.env.MONGO_URL}`
 3. This project will connect to a MongoDB Atlas database, and you will need to configure your project to connect to one to (local MongoDB to be added in the future). 
     1. Visit the MongoDB Atlas [Getting Started Page](https://docs.atlas.mongodb.com/getting-started/)
     2. Follow the instructions to create a free cluster and create an admin user or a user with read/write priviledges (note: remember to save the password somewhere safe).

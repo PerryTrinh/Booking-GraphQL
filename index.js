@@ -17,18 +17,15 @@ app.use('/graphql', graphqlHttp({
     graphiql: true
 }));
 
-mongoose.connect('mongodb://localhost:27017/bookings-db')
+// Change 'mongoose.connect' line to one of the following if you are not using docker:
+//      CloudDB: mongoose.connect(`${process.env.MONGO_URL}`, {useNewUrlParser: true})
+//      Local: mongoose.connect('http://localhost:27017/bookings-db', {useNewUrlParser: true})
+//      Docker: mongoose.connect('mongodb://mongo:27017/bookings-db', {useNewUrlParser: true})
+
+mongoose.connect('mongodb://mongo:27017/bookings-db', {useNewUrlParser: true})
     .then(() => {
         console.log(`Connected to MongoDB`);
         app.listen(PORT);
     }).catch(error => {
         console.log(`Could not connect to MongoDB: ${error}`);
     });
-
-// Uncomment this if using a cloud DB (like MongoDB Atlas)
-// mongoose.connect(`${process.env.MONGO_URL}`)
-//     .then(() => {
-//         app.listen(PORT);
-//     }).catch(err => {
-//         console.log(err);
-//     });
