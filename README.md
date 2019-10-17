@@ -47,6 +47,7 @@ where you replace the username, password, and collection name with the relevant 
 - [Express](https://www.npmjs.com/package/express) - Web application framework for Node.js
 - [Express-GraphQL](https://www.npmjs.com/package/express-graphql) - Express server to handle GraphQL queries
 - [GraphQL](https://www.npmjs.com/package/graphql) - JS Implementation of GraphQL
+- [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken) - To generate JWTs for user authentication
 - [Mongoose](https://www.npmjs.com/package/mongoose) - Library to add MongoDB drivers and enables object modeling through JS objects
 
 #### Dev modules

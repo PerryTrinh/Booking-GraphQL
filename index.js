@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 
 const graphQLSchema = require('./graphql/schema/index');
 const graphQLResolvers = require('./graphql/resolvers/index');
+const isAuth = require('./middleware/is-auth');
 
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
+app.use(isAuth); //Adds metadata on whether request is authorized
 
 app.use('/graphql', graphqlHttp({
     schema: graphQLSchema,
@@ -22,7 +24,7 @@ app.use('/graphql', graphqlHttp({
 //      Local: mongoose.connect('http://localhost:27017/bookings-db', {useNewUrlParser: true})
 //      Docker: mongoose.connect('mongodb://mongo:27017/bookings-db', {useNewUrlParser: true})
 
-mongoose.connect('mongodb://mongo:27017/bookings-db', {useNewUrlParser: true})
+mongoose.connect(`${process.env.MONGO_URL}`, {useNewUrlParser: true})
     .then(() => {
         console.log(`Connected to MongoDB`);
         app.listen(PORT);

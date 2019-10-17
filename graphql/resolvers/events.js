@@ -13,13 +13,17 @@ module.exports = {
             return transformEvent(event);
         });
     },
-    createEvent: async args => {
+    createEvent: async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error('Unauthorized request to create event');
+        }
+
         const event = new Event({
             title: args.eventInput.title,
             description: args.eventInput.description,
             price: +args.eventInput.price,
             date: new Date(args.eventInput.date),
-            creator: '5da4be6d79e41c35a4a5108f'
+            creator: req.userId
         });
         let createdEvent;
 
@@ -30,7 +34,7 @@ module.exports = {
 
         createdEvent = transformEvent(result);
 
-        const creator = await User.findById('5da4be6d79e41c35a4a5108f').catch(error => {
+        const creator = await User.findById(req.userId).catch(error => {
             console.log(`Error searching for user with given ID`);
             throw error;
         });
