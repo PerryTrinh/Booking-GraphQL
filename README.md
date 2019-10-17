@@ -1,6 +1,6 @@
 # Event Booking Web App
 
-Simple event booking application written in Node.js with Express and React.js, with storage in MongoDB
+Simple event booking application written in Node.js with Express, data storage in MongoDB
 
 ## Install Instructions (The Docker way)
 1. Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
