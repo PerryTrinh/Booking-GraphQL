@@ -8,10 +8,11 @@ module.exports = {
       throw new Error("Unauthorized request to create event");
     }
 
-    const bookings = await Booking.find().catch(error => {
+    const bookings = await Booking.find({user: req.userId}).catch(error => {
       console.log(`Cannot fetch bookings: ${error}`);
       throw error;
     });
+
     return bookings.map(booking => {
       return transformBooking(booking);
     });
