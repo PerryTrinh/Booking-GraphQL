@@ -53,6 +53,7 @@ where you replace the username, password, and collection name with the relevant 
 
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs) - Security package for storing sensitive information
 - [Body-Parser](https://www.npmjs.com/package/body-parser) - Middleware to parse body of HTTP requests
+- [DataLoader](https://github.com/graphql/dataloader) - Utility to bundle queries to prevent duplicate requests
 - [Express](https://www.npmjs.com/package/express) - Web application framework for Node.js
 - [Express-GraphQL](https://www.npmjs.com/package/express-graphql) - Express server to handle GraphQL queries
 - [GraphQL](https://www.npmjs.com/package/graphql) - JS Implementation of GraphQL

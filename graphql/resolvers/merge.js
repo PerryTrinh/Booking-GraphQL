@@ -1,38 +1,50 @@
+const DataLoader = require('dataloader');
+
 const Event = require("../../models/event");
 const User = require("../../models/user");
 
 const dateToString = date => new Date(date).toISOString();
 
-const user = async userId => {
-  const user = await User.findById(userId).catch(error => {
-    throw error;
-  });
+const eventLoader = new DataLoader((eventIds) => {
+  return events(eventIds);
+});
 
-  return {
-    ...user._doc,
-    _id: user.id,
-    password: null,
-    createdEvents: events.bind(this, user._doc.createdEvents)
-  };
-};
+const userLoader = new DataLoader(userIds => {
+  return User.find({_id: {$in: userIds}});
+});
 
 const events = async eventIds => {
   const events = await Event.find({ _id: { $in: eventIds } }).catch(error => {
+    console.log(`Error fetching event data from database: ${error}`);
     throw error;
   });
 
   return events.map(event => {
     return transformEvent(event);
   });
+
 };
 
 const singleEvent = async eventId => {
-  const event = await Event.findById(eventId).catch(error => {
-    console.log(`Error finding event with given ID: ${error}`);
+  const event = await eventLoader.load(eventId.toString()).catch(error => {
+    console.log(`Error fetching event data from database: ${error}`);
     throw error;
   });
 
-  return transformEvent(event);
+  return event;
+};
+
+const user = async userId => {
+  const user = await userLoader.load(userId.toString()).catch(error => {
+    console.log(`Error fetching user data from database: ${error}`);
+    throw error;
+  });
+  
+  return {
+    ...user._doc,
+    _id: user.id,
+    createdEvents: () => eventLoader.loadMany(user._doc.createdEvents)
+  };
 };
 
 const transformEvent = event => {
@@ -55,5 +67,5 @@ const transformBooking = booking => {
   };
 };
 
-exports.transformBooking = transformBooking;
 exports.transformEvent = transformEvent;
+exports.transformBooking = transformBooking;
